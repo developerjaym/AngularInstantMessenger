@@ -18,6 +18,7 @@
 }
 .toolbar-item:active {
   background-color: gainsboro;
+  color: black;
 }
 .user-input {
   font-family: serif;
