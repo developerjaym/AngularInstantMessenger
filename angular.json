@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "Aim"
+  "defaultProject": "Aim",
+  "cli": {
+    "analytics": false
+  }
 }
