@@ -30,24 +30,25 @@
       People
     </div>
   </div>
-  <div class="ridged message-history">
-    <div class="message-history__element">
-      <span class="user-input message-history__element__sender message-history__element__sender--self">jman:</span>
-      <span class="user-input message-history__element__content">hey</span>
-    </div>
-    <div class="message-history__element">
-      <span class="user-input message-history__element__sender message-history__element__sender--other">banannas:</span>
-      <span class="user-input message-history__element__content">Lol rem ipsum dolor sit amet, consectetur adipiscing elit. In viverra lobortis eros. Fusce laoreet sodales interdum. Vestibulum a tempus nunc, nec maximus felis. Ut risus diam, volutpat quis dui ut, pulvinar porttitor augue. Vivamus congue dictum interdum. Nunc et cursus nunc, id aliquet purus. Suspendisse sit amet malesuada ligula, id gravida eros. Vivamus sollicitudin ornare turpis eget rhoncus. Nulla ac sodales felis.
-      </span>
+  <div class="ridged message-history" [ngClass]="{'bold': isBold}" [ngStyle]="{'font-size': fontSize + 'px'}">
+    <div class="message-history__element" *ngFor="let message of data" >
+      <span
+      class="user-input message-history__element__sender"
+      [ngClass]="{
+      'message-history__element__sender--other': loggedInUser.name !== message.sender,
+       'message-history__element__sender--self': message.sender === loggedInUser.name}">
+       {{message.sender}}: </span>
+      <span class="user-input message-history__element__content">{{message.message}}</span>
     </div>
   </div>
   <div class="message-composer">
     <div class="grooved toolbar message-composer__toolbar">
-      <button class="toolbar-item toolbar-item--active" title="Make text bold">B</button>
-      <button class="toolbar-item" title="Increase text size">Aꜛ</button>
-      <button class="toolbar-item" title="Decrease text size">Aꜜ</button>
+      <app-toolbar-item [label]="'B'" title="Make text bold" (click)="isBold = !isBold" [active]="isBold"></app-toolbar-item>
+      <app-toolbar-item [label]="'Aꜛ'" title="Increase text size" (click)="fontSize = fontSize + 1"></app-toolbar-item>
+      <app-toolbar-item [label]="'Aꜜ'" title="Decrease text size" (click)="fontSize = fontSize - 1"></app-toolbar-item>
+
     </div>
-    <textarea class="ridged user-input message-composer__textarea">sup</textarea>
+    <textarea [ngClass]="{'bold': isBold}" class="ridged user-input message-composer__textarea" [ngStyle]="{'font-size': fontSize + 'px'}">sup</textarea>
     <div class="menu message-composer__options">
       <div class="grooved message-composer__option-group">
         <div class="centered message-composer__option">

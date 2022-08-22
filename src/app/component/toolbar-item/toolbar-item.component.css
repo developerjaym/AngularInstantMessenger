@@ -1,0 +1,15 @@
+.toolbar-item {
+  border: none;
+  background-color: transparent;
+
+  width: 24px;
+  height: 24px;
+}
+.toolbar-item--active {
+  background-color: black;
+  color: lightgray;
+}
+.toolbar-item:active {
+  background-color: gainsboro;
+  color: black;
+}

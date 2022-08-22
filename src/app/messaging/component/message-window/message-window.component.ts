@@ -7,6 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageWindowComponent implements OnInit {
 
+  data = [
+    {
+      sender: 'jman',
+      message: 'hey'
+    },
+    {
+      sender: 'banannas',
+      message: 'lorem ipsum'
+    }
+  ]
+  loggedInUser = {
+    name: 'jman'
+  }
+  fontSize: number = 14;
+  isBold = false;
+
   constructor() { }
 
   ngOnInit(): void {
