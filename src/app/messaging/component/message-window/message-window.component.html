@@ -35,10 +35,10 @@
       <span
       class="user-input message-history__element__sender"
       [ngClass]="{
-      'message-history__element__sender--other': loggedInUser.name !== message.sender,
-       'message-history__element__sender--self': message.sender === loggedInUser.name}">
-       {{message.sender}}: </span>
-      <span class="user-input message-history__element__content">{{message.message}}</span>
+      'message-history__element__sender--other': loggedInUser.name !== message.user.username,
+       'message-history__element__sender--self': message.user.username === loggedInUser.name}">
+       {{message.user.username}}: </span>
+      <span class="user-input message-history__element__content">{{message.content}}</span>
     </div>
   </div>
   <div class="message-composer">
