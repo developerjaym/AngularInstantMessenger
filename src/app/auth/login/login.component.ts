@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // 1
+    //1
     let formValue = this.loginForm.value;
     this.loginForm.reset();
     this.authService.signin(formValue).subscribe(
-      (result) => {}
+      (result) => {console.log("did i catch the error?",result)}
     );
   }
 }

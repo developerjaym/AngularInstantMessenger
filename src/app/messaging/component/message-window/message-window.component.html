@@ -12,7 +12,7 @@
       </app-window-menu-item>
     </app-window-menu>
     <div class="ridged message-history" [ngClass]="{'bold': isBold}" [ngStyle]="{'font-size': fontSize + 'px'}">
-      <div class="message-history__element" *ngFor="let message of data">
+      <div class="message-history__element" *ngFor="let message of data; trackBy:identify">
         <span class="user-input message-history__element__sender" [ngClass]="{
       'message-history__element__sender--other': loggedInUser.name !== message.user.username,
        'message-history__element__sender--self': message.user.username === loggedInUser.name}">
