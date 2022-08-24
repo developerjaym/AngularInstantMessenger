@@ -9,6 +9,7 @@ import { ToolbarItemComponent } from './component/toolbar-item/toolbar-item.comp
 // To make http requests we need to import the module:
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptorService } from './token-interceptor.service';
+import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './auth/login/login.component';
 import { WindowComponent } from './component/window/window.component';
 import { WindowMenuComponent } from './component/window-menu/window-menu.component';
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     MessageWindowComponent,
+    HomePageComponent
     ToolbarItemComponent,
     LoginComponent,
     WindowComponent,

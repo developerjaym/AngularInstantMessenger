@@ -1,0 +1,13 @@
+.Home {
+    background-image: url("https://wallpaperaccess.com/full/1612232.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+button {
+    background: none;
+    border: none;
+}
+.iconClicked {
+    border: 1px black;
+    background-color: rgb(144,144,144,0.5);
+}
