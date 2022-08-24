@@ -9,17 +9,27 @@ import { ToolbarItemComponent } from './component/toolbar-item/toolbar-item.comp
 // To make http requests we need to import the module:
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptorService } from './token-interceptor.service';
+import { LoginComponent } from './auth/login/login.component';
+import { WindowComponent } from './component/window/window.component';
+import { WindowMenuComponent } from './component/window-menu/window-menu.component';
+import { WindowMenuItemComponent } from './component/window-menu-item/window-menu-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageWindowComponent,
-    ToolbarItemComponent
+    ToolbarItemComponent,
+    LoginComponent,
+    WindowComponent,
+    WindowMenuComponent,
+    WindowMenuItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   // I want Angular to know that I am using a TokenInterceptorService!!!
   providers: [{

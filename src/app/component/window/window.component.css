@@ -1,0 +1,45 @@
+.window {
+  border-width: 3px;
+  border-color: rgb(0, 98, 255) blue blue blue;
+  border-style: ridge;
+  border-radius: 4px;
+
+  background-color: lightgray;
+
+  display: flex;
+  flex-direction: column;
+}
+.window__titlebar-icon {
+  padding: 0 2px 0 2px;
+
+}
+.window__titlebar {
+  background-color: blue;
+  color: white;
+
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1px;
+}
+.window__titlebar-label {
+  margin-right: auto;
+}
+.window__titlebar-button {
+  box-sizing: border-box;
+  height: 24px;
+  width: 24px;
+
+  display: flex;
+  justify-self: center;
+  align-items: center;
+
+  border-radius: 4px;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+}

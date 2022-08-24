@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { AuthenticateService } from './authenticate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,8 @@ import { catchError, Observable, throwError } from 'rxjs';
   export class TokenInterceptorService implements HttpInterceptor{
     // configured, should intercept EVERY http call
     // and keep track of tokens which are needed by other services!
-    
-  constructor() { }
+
+  constructor(private authService: AuthenticateService) { }
 
   intercept(
     request: HttpRequest<any>,
@@ -17,7 +18,7 @@ import { catchError, Observable, throwError } from 'rxjs';
   ): Observable<HttpEvent<any>> {
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjYxODcyOTA2LCJpYXQiOjE2NjEyNjgxMDZ9.GHRqlp6IGbPO0guQgFW4b0rjm8F2NnO7HL2IQG2PGDyd-6Zl775RQRcqZMYghMyQIv07RD8U_uHX83ZIRXZdPQ`,
+        Authorization: this.authService.getAuthorizationHeaderValue(),
       },
     });
     return next.handle(request).pipe(

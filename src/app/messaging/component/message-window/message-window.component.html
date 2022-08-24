@@ -1,82 +1,66 @@
-<div class="window window-chat">
-  <div class="window__titlebar">
-    <div class="icon window__titlebar-icon">
-      💬
-    </div>
-    <div class="label window__titlebar-label">
-      Instant Message
-    </div>
-    <div class="button icon-button centered window__titlebar-button">
-      _
-    </div>
-    <div class="button icon-button centered window__titlebar-button">
-      ⧠
-    </div>
-    <div class="button warning centered icon-button window__titlebar-button">
-      X
-    </div>
-  </div>
-  <div class="under-ridged menu window__menu">
-    <div class="menu-item">
-      File
-    </div>
-    <div class="menu-item">
-      Edit
-    </div>
-    <div class="menu-item">
-      Insert
-    </div>
-    <div class="menu-item">
-      People
-    </div>
-  </div>
-  <div class="ridged message-history" [ngClass]="{'bold': isBold}" [ngStyle]="{'font-size': fontSize + 'px'}">
-    <div class="message-history__element" *ngFor="let message of data" >
-      <span
-      class="user-input message-history__element__sender"
-      [ngClass]="{
+<div class="chat-container">
+
+  <app-window icon="💬" label="Instant Message">
+    <app-window-menu>
+      <app-window-menu-item label="File">
+      </app-window-menu-item>
+      <app-window-menu-item label="Edit">
+      </app-window-menu-item>
+      <app-window-menu-item label="Insert">
+      </app-window-menu-item>
+      <app-window-menu-item label="People">
+      </app-window-menu-item>
+    </app-window-menu>
+    <div class="ridged message-history" [ngClass]="{'bold': isBold}" [ngStyle]="{'font-size': fontSize + 'px'}">
+      <div class="message-history__element" *ngFor="let message of data">
+        <span class="user-input message-history__element__sender" [ngClass]="{
       'message-history__element__sender--other': loggedInUser.name !== message.user.username,
        'message-history__element__sender--self': message.user.username === loggedInUser.name}">
-       {{message.user.username}}: </span>
-      <span class="user-input message-history__element__content">{{message.content}}</span>
+          {{message.user.username}}: </span>
+        <span class="user-input message-history__element__content">{{message.content}}</span>
+      </div>
     </div>
-  </div>
-  <div class="message-composer">
-    <div class="grooved toolbar message-composer__toolbar">
-      <app-toolbar-item [label]="'B'" title="Make text bold" (click)="isBold = !isBold" [active]="isBold"></app-toolbar-item>
-      <app-toolbar-item [label]="'Aꜛ'" title="Increase text size" (click)="fontSize = fontSize + 1"></app-toolbar-item>
-      <app-toolbar-item [label]="'Aꜜ'" title="Decrease text size" (click)="fontSize = fontSize - 1"></app-toolbar-item>
+    <div class="message-composer">
+      <div class="grooved toolbar message-composer__toolbar">
+        <app-toolbar-item [label]="'B'" title="Make text bold" (click)="isBold = !isBold" [active]="isBold">
+        </app-toolbar-item>
+        <app-toolbar-item [label]="'Aꜛ'" title="Increase text size" (click)="fontSize = fontSize + 1">
+        </app-toolbar-item>
+        <app-toolbar-item [label]="'Aꜜ'" title="Decrease text size" (click)="fontSize = fontSize - 1">
+        </app-toolbar-item>
 
+      </div>
+      <textarea [ngClass]="{'bold': isBold}" class="ridged user-input message-composer__textarea"
+        [ngStyle]="{'font-size': fontSize + 'px'}">sup</textarea>
+      <div class="menu message-composer__options">
+        <div class="grooved message-composer__option-group">
+          <div class="centered message-composer__option">
+            ?
+          </div>
+          <div class="centered message-composer__option">
+            Warn
+          </div>
+          <div class="centered message-composer__option">
+            Block
+          </div>
+        </div>
+        <div class="grooved message-composer__option-group">
+          <div class="centered message-composer__option">
+            Add Buddy
+          </div>
+          <div class="centered message-composer__option message-composer__option--inactive">
+            Add Talk
+          </div>
+          <div class="centered message-composer__option">
+            Get Info
+          </div>
+        </div>
+        <div class="grooved message-composer__option-group">
+          <div class="centered message-composer__option">
+            Send
+          </div>
+        </div>
+      </div>
     </div>
-    <textarea [ngClass]="{'bold': isBold}" class="ridged user-input message-composer__textarea" [ngStyle]="{'font-size': fontSize + 'px'}">sup</textarea>
-    <div class="menu message-composer__options">
-      <div class="grooved message-composer__option-group">
-        <div class="centered message-composer__option">
-          ?
-        </div>
-        <div class="centered message-composer__option">
-          Warn
-        </div>
-        <div class="centered message-composer__option">
-          Block
-        </div>
-      </div>
-      <div class="grooved message-composer__option-group">
-        <div class="centered message-composer__option">
-          Add Buddy
-        </div>
-        <div class="centered message-composer__option message-composer__option--inactive">
-          Add Talk
-        </div>
-        <div class="centered message-composer__option">
-          Get Info
-        </div>
-      </div>
-      <div class="grooved message-composer__option-group">
-        <div class="centered message-composer__option">
-          Send
-        </div>
-      </div>
-    </div>
-  </div>
+  </app-window>
 </div>

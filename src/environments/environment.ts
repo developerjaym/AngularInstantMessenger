@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  usersLink: 'http://localhost:8080/api/users/',
   conversationLink: 'http://localhost:8080/api/conversations/'
 };
 

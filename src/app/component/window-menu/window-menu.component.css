@@ -1,0 +1,4 @@
+.window__menu {
+  display: flex;
+  column-gap: 1px;
+}

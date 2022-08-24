@@ -1,0 +1,23 @@
+.login-container {
+  width: 350px;
+}
+.login-window-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  row-gap: 24px;
+  padding-bottom: 12px;
+}
+.logo-icon {
+  font-size: 150px;
+}
+.logo-label {
+  font-size: large;
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
