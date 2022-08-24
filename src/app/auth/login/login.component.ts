@@ -24,11 +24,17 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    //1
+    // localhost:4200chat/1
     let formValue = this.loginForm.value;
     this.loginForm.reset();
     this.authService.signin(formValue).subscribe(
-      (result) => {console.log("did i catch the error?",result)}
+      (goodCredentials) => {
+        if (goodCredentials) {
+          this.router.navigate(["chat", "1"])
+        }
+        console.log("did i catch the error?",goodCredentials);
+        
+      }
     );
   }
 }

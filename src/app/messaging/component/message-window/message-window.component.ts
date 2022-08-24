@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthenticateService } from 'src/app/authenticate.service';
 import { Message } from '../../../message';
-import { MessagesService } from '../../../messages.service'
+import { MessagesService } from '../../../messages.service';
+
+//Let's import Activated Route!
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-message-window',
@@ -27,7 +28,12 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
   // Let's try and use dependency injection!
 //   constructor() { }
 
-  constructor(private messagesService:MessagesService, private authService: AuthenticateService) { }
+  constructor(private messagesService:MessagesService, 
+    private authService: AuthenticateService,
+    private route:ActivatedRoute) { 
+
+  }
+  
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
@@ -37,15 +43,15 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
 
   // Angular Life Cycle Method: On init:
   ngOnInit(): void {
+    let id:string|null = this.route.snapshot.paramMap.get("id");
 
-    this.route.snapshot.paramMap.get("id");
-    this.getMessages();
+    this.getMessages(id);
   }
 
   // Let's create this method to avoid cluttering ng on init
-  getMessages(): void {
+  getMessages(id:string|null): void {
     // 2 (should I unsubscribe? Why or why not?)
-      this.subscription = this.messagesService.getMessages().subscribe
+      this.subscription = this.messagesService.getMessages(id).subscribe
           (messages => this.data = messages);
   }
 

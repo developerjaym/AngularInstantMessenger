@@ -5,8 +5,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MessageWindowComponent } from './messaging/component/message-window/message-window.component';
 
 const routes: Routes = [
-  { path: "", component: HomePageComponent },
-  { path: "login", component: LoginComponent },
+  { path: "", component: HomePageComponent},
+  { path: "login", component: LoginComponent},
   { path: "chat/:id", component: MessageWindowComponent}
 ];
 

@@ -22,13 +22,12 @@ export class MessagesService {
         ];
   constructor(private httpClient: HttpClient) { }
 
-  getMessages():Observable<Message[]> {
-    // 2 (what is happening here!??!!)
+  getMessages(id:string|null):Observable<Message[]> {
     return timer(1, 3000)
     .pipe(
       tap(x => console.log("hi", x)),
       switchMap(x => this.httpClient.get<Message[]>
-        ('http://localhost:8080/api/conversations/1/messages')),
+        (`http://localhost:8080/api/conversations/${id}/messages`)),
         retry()
         // can I retry this if it fails?
         // can I share this so that new Subscribers don't kick off new Http calls?
