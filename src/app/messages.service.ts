@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { interval, mergeMap, Observable, of, retry, switchMap, tap, timer } from 'rxjs';
 import { Message } from './message';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,13 +23,14 @@ export class MessagesService {
   constructor(private httpClient: HttpClient) { }
 
   getMessages():Observable<Message[]> {
-  // we can change this now to do an http request
-  return this.httpClient.get<Message[]>
-  ('http://localhost:8080/api/conversations/1/messages');
-  //
+    // 2 (what is happening here!??!!)
+    return timer(1, 3000)
+    .pipe(
+      tap(x => console.log("hi", x)),
+      switchMap(x => this.httpClient.get<Message[]>
+        ('http://localhost:8080/api/conversations/1/messages')),
+        retry()
 
-
-//     const obsvMessages = of(this.messages);
-//     return obsvMessages;
+    );
   }
 }

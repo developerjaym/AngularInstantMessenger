@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    // 1
     let formValue = this.loginForm.value;
     this.loginForm.reset();
     this.authService.signin(formValue).subscribe(

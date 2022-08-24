@@ -21,6 +21,7 @@ export class AuthenticateService {
   }
 
   signin(loginRequest: LoginRequest): Observable<boolean> {
+    // 1
     return this.httpClient
       .post<any>(environment.usersLink + 'signin', loginRequest)
       .pipe(
