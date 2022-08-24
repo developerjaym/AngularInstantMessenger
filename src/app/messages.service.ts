@@ -32,7 +32,7 @@ export class MessagesService {
         // can I retry this if it fails?
         // can I share this so that new Subscribers don't kick off new Http calls?
         // is there a way I can make this stop
-        //    like take updates until some condition is true?
+        //    like take updates while some condition is true?
     );
   }
 }
