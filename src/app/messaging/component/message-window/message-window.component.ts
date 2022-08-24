@@ -1,3 +1,5 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthenticateService } from 'src/app/authenticate.service';
@@ -35,6 +37,8 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
 
   // Angular Life Cycle Method: On init:
   ngOnInit(): void {
+
+    this.route.snapshot.paramMap.get("id");
     this.getMessages();
   }
 

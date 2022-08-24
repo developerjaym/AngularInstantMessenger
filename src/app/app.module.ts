@@ -16,11 +16,14 @@ import { WindowMenuComponent } from './component/window-menu/window-menu.compone
 import { WindowMenuItemComponent } from './component/window-menu-item/window-menu-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// To add routing to our application we need this module
+import { RouterModule, Routes } from "@angular/router";
+
 @NgModule({
   declarations: [
     AppComponent,
     MessageWindowComponent,
-    HomePageComponent
+    HomePageComponent,
     ToolbarItemComponent,
     LoginComponent,
     WindowComponent,
