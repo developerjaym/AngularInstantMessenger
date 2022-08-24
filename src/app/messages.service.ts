@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Message } from './message';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, retry, switchMap, tap, timer } from 'rxjs';
+import { Message } from './message';
 
 @Injectable({
   providedIn: 'root'
@@ -23,13 +23,17 @@ export class MessagesService {
   constructor(private httpClient: HttpClient) { }
 
   getMessages():Observable<Message[]> {
-  // we can change this now to do an http request
-  return this.httpClient.get<Message[]>
-  ('http://localhost:8080/api/conversations/1/messages');
-  //
-
-
-//     const obsvMessages = of(this.messages);
-//     return obsvMessages;
+    // 2 (what is happening here!??!!)
+    return timer(1, 3000)
+    .pipe(
+      tap(x => console.log("hi", x)),
+      switchMap(x => this.httpClient.get<Message[]>
+        ('http://localhost:8080/api/conversations/1/messages')),
+        retry()
+        // can I retry this if it fails?
+        // can I share this so that new Subscribers don't kick off new Http calls?
+        // is there a way I can make this stop
+        //    like take updates while some condition is true?
+    );
   }
 }

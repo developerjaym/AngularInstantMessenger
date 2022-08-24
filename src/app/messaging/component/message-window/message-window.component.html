@@ -12,7 +12,7 @@
       </app-window-menu-item>
     </app-window-menu>
     <div class="ridged message-history" [ngClass]="{'bold': isBold}" [ngStyle]="{'font-size': fontSize + 'px'}">
-      <div class="message-history__element" *ngFor="let message of data">
+      <div class="message-history__element" *ngFor="let message of data; trackBy:identify">
         <span class="user-input message-history__element__sender" [ngClass]="{
       'message-history__element__sender--other': loggedInUser.name !== message.user.username,
        'message-history__element__sender--self': message.user.username === loggedInUser.name}">
@@ -55,10 +55,11 @@
             Get Info
           </div>
         </div>
-        <div class="grooved message-composer__option-group">
-          <div class="centered message-composer__option">
-            Send
-          </div>
+        <div class="message-composer__option-group">
+          <button class="grooved icon-button">
+            <div class="icon-button__icon">✉</div>
+            <div class="icon-button__label">Send</div>
+          </button>
         </div>
       </div>
     </div>

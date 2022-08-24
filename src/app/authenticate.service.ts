@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { catchError, filter, map, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { JwtAuthenticationResponse } from './auth/model/jwt-authentication-response';
 import { LoginRequest } from './auth/model/login-request';
@@ -21,14 +21,16 @@ export class AuthenticateService {
   }
 
   signin(loginRequest: LoginRequest): Observable<boolean> {
+    // 1
     return this.httpClient
-      .post<any>(environment.usersLink + 'signin', loginRequest)
+      .post<JwtAuthenticationResponse>(environment.usersLink + 'signin', loginRequest)
       .pipe(
         tap(
           (jwtAuthenticationResponse) =>
             (this.jwtAuthenticationResponse = jwtAuthenticationResponse)
         ),
-        map(response => true)
+        map(response => true),
+        catchError(e => of(false))
       );
   }
 
