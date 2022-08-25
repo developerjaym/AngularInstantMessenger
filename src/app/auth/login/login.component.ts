@@ -11,7 +11,9 @@ import { AuthenticateService } from 'src/app/authenticate.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticateService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+    private authService: AuthenticateService,
+    private router: Router) {
     this.loginForm = this.formBuilder.group(
       {
         username: ['', Validators.required],
@@ -32,8 +34,8 @@ export class LoginComponent implements OnInit {
         if (goodCredentials) {
           this.router.navigate(["chat", "1"])
         }
-        console.log("did i catch the error?",goodCredentials);
-        
+        console.log("did i have good credentials ",goodCredentials);
+
       }
     );
   }
