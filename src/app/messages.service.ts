@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry, switchMap, tap, timer } from 'rxjs';
+import { CreateMessage } from './create-message';
 import { Message } from './message';
 
 @Injectable({
@@ -23,7 +24,7 @@ export class MessagesService {
   constructor(private httpClient: HttpClient) { }
 
   getMessages(id:string|null):Observable<Message[]> {
-    return timer(1, 3000)
+    return timer(1, 500)
     .pipe(
       tap(x => console.log("hi", x)),
       switchMap(x => this.httpClient.get<Message[]>
@@ -34,5 +35,11 @@ export class MessagesService {
         // is there a way I can make this stop
         //    like take updates while some condition is true?
     );
+  }
+
+  sendMessage(newMessage:CreateMessage,conversationID:number){
+    this.httpClient.post((`http://localhost:8080/api/conversations/${conversationID}/messages`),newMessage)
+    .subscribe(() => 
+      this.getMessages(String(conversationID)))
   }
 }

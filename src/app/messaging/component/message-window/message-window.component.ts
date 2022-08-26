@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthenticateService } from 'src/app/authenticate.service';
 import { Message } from '../../../message';
@@ -6,6 +6,7 @@ import { MessagesService } from '../../../messages.service';
 
 //Let's import Activated Route!
 import { ActivatedRoute } from '@angular/router';
+import { CreateMessage } from 'src/app/create-message';
 
 @Component({
   selector: 'app-message-window',
@@ -15,6 +16,8 @@ import { ActivatedRoute } from '@angular/router';
 export class MessageWindowComponent implements OnInit, OnDestroy {
 
   data?:Message[];
+  conversationID!:number;
+  messageString:string="";
 
   loggedInUser = {
     name: 'jman'
@@ -31,6 +34,9 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
   constructor(private messagesService:MessagesService, 
     private authService: AuthenticateService,
     private route:ActivatedRoute) { 
+      this.route.paramMap.subscribe((paramMap) => {
+        this.conversationID = Number(paramMap.get('id'));
+      });
 
   }
   
@@ -53,6 +59,20 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
     // 2 (should I unsubscribe? Why or why not?)
       this.subscription = this.messagesService.getMessages(id).subscribe
           (messages => this.data = messages);
+  }
+
+  sendMessage(){
+    let newMessage=new CreateMessage
+    newMessage.content=this.messageString
+    this.messagesService.sendMessage(newMessage,this.conversationID)
+  }
+
+  doTextareaValueChange(ev:any) {
+    try {
+      this.messageString = ev.target.value;
+    } catch(e) {
+      console.info('could not set textarea-value');
+    }
   }
 
   identify(index: number, message: Message) {
