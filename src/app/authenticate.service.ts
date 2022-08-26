@@ -36,7 +36,7 @@ export class AuthenticateService {
   }
 
   getUsers():Observable<UserDTO[]>{
-    return this.httpClient.get<UserDTO[]>((`http://localhost:8080/api/users`))
+    return this.httpClient.get<UserDTO[]>(environment.usersLink)
   }
 
   getAuthorizationHeaderValue(): string {
