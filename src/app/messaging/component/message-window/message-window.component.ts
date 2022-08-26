@@ -6,7 +6,7 @@ import { MessagesService } from '../../../messages.service';
 
 //Let's import Activated Route!
 import { ActivatedRoute } from '@angular/router';
-import { CreateMessage } from 'src/app/create-message';
+import { CreateMessage } from 'src/app/messaging/model/create-message';
 
 @Component({
   selector: 'app-message-window',
@@ -62,17 +62,10 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
   }
 
   sendMessage(){
-    let newMessage=new CreateMessage
-    newMessage.content=this.messageString
+    let newMessage:CreateMessage = {
+    content: this.messageString}
     this.messagesService.sendMessage(newMessage,this.conversationID)
-  }
-
-  doTextareaValueChange(ev:any) {
-    try {
-      this.messageString = ev.target.value;
-    } catch(e) {
-      console.info('could not set textarea-value');
-    }
+    this.messageString=""
   }
 
   identify(index: number, message: Message) {

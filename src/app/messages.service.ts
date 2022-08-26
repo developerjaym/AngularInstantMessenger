@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry, switchMap, tap, timer } from 'rxjs';
-import { CreateMessage } from './create-message';
+import { CreateMessage } from './messaging/model/create-message';
 import { Message } from './message';
 
 @Injectable({
@@ -26,8 +26,7 @@ export class MessagesService {
   getMessages(id:string|null):Observable<Message[]> {
     return timer(1, 500)
     .pipe(
-      tap(x => console.log("hi", x)),
-      switchMap(x => this.httpClient.get<Message[]>
+        switchMap(x => this.httpClient.get<Message[]>
         (`http://localhost:8080/api/conversations/${id}/messages`)),
         retry()
         // can I retry this if it fails?
@@ -39,7 +38,6 @@ export class MessagesService {
 
   sendMessage(newMessage:CreateMessage,conversationID:number){
     this.httpClient.post((`http://localhost:8080/api/conversations/${conversationID}/messages`),newMessage)
-    .subscribe(() => 
-      this.getMessages(String(conversationID)))
+    .subscribe()
   }
 }

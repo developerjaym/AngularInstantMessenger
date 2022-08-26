@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
         if (goodCredentials) {
           this.router.navigate(["chat", "1"])
         }
-        console.log("did i have good credentials ",goodCredentials);
-
+        
       }
     );
   }

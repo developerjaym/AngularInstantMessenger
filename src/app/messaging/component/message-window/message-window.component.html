@@ -30,8 +30,8 @@
         </app-toolbar-item>
 
       </div>
-      <textarea [ngClass]="{'bold': isBold}" class="ridged user-input message-composer__textarea"
-        [ngStyle]="{'font-size': fontSize + 'px'}" (change)="doTextareaValueChange($event)" placeholder="Enter your message here"></textarea>
+      <textarea [(ngModel)]="messageString" [ngClass]="{'bold': isBold}" class="ridged user-input message-composer__textarea"
+        [ngStyle]="{'font-size': fontSize + 'px'}" placeholder="Enter your message here"></textarea>
       <div class="menu message-composer__options">
         <div class="grooved message-composer__option-group">
           <div class="centered message-composer__option">
