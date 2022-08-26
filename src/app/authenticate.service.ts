@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { JwtAuthenticationResponse } from './auth/model/jwt-authentication-response';
 import { LoginRequest } from './auth/model/login-request';
 import { SignUpRequest } from './auth/model/sign-up-request';
+import { UserDTO } from './messaging/model/user-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +33,10 @@ export class AuthenticateService {
         map(response => true),
         catchError(e => of(false))
       );
+  }
+
+  getUsers():Observable<UserDTO[]>{
+    return this.httpClient.get<UserDTO[]>((`http://localhost:8080/api/users`))
   }
 
   getAuthorizationHeaderValue(): string {

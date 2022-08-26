@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // To add routing to our application we need this module
 import { RouterModule, Routes } from "@angular/router";
+import { UserListComponent } from './messaging/component/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RouterModule, Routes } from "@angular/router";
     LoginComponent,
     WindowComponent,
     WindowMenuComponent,
-    WindowMenuItemComponent
+    WindowMenuItemComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

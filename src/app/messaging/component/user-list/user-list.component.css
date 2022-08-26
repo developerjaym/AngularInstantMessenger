@@ -1,0 +1,16 @@
+.chat-container {
+    width: 250px;
+    position:fixed;
+    left: 15px;
+  }
+
+  .message-history {
+    margin: 4px;
+    padding: 2px;
+  
+    background-color: white;
+  
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
