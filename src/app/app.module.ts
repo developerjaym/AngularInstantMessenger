@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // To add routing to our application we need this module
 import { RouterModule, Routes } from "@angular/router";
+import { SingupComponent } from './auth/singup/singup.component';
 import { UserListComponent } from './messaging/component/user-list/user-list.component';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserListComponent } from './messaging/component/user-list/user-list.com
     WindowComponent,
     WindowMenuComponent,
     WindowMenuItemComponent,
+    SingupComponent
     UserListComponent
   ],
   imports: [

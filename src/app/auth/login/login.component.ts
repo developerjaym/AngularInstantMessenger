@@ -6,38 +6,39 @@ import { AuthenticateService } from 'src/app/authenticate.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private authService: AuthenticateService,
-    private router: Router) {
-    this.loginForm = this.formBuilder.group(
-      {
-        username: ['', Validators.required],
-        password: ['', Validators.required]
-      }
-    )
+    private router: Router
+  ) {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
-  ngOnInit(): void {
-  }
+  showErrorMessage = false;
+
+  ngOnInit(): void {}
 
   login() {
     // localhost:4200chat/1
     let formValue = this.loginForm.value;
     this.loginForm.reset();
-    this.authService.signin(formValue).subscribe(
-      (goodCredentials) => {
-        if (goodCredentials) {
-          this.router.navigate(["chat", "1"])
-        }
-        else{
-          alert("Username or password incorrect")
-        }
+    this.authService.signin(formValue).subscribe((goodCredentials) => {
+      if (goodCredentials) {
+        this.showErrorMessage = false;
+        this.router.navigate(['chat', '1']);
+        return;
+      } else {
+        alert("Username or password incorrect")
       }
-    );
+      this.showErrorMessage = true;
+      console.log('did i have good credentials ', goodCredentials);
+    });
   }
 }
