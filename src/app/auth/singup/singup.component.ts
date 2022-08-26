@@ -35,6 +35,7 @@ export class SingupComponent implements OnInit {
     this.authService.signup(formValue).subscribe({
       next: (data) => {
         this.router.navigate(['/login']);
+        alert('Sign Up is successful!');
       },
       error: (err) => {
         this.error = err;
