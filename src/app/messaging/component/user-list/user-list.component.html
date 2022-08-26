@@ -1,25 +1,18 @@
 <div class="chat-container">
+  <app-window icon="👥" label="Users">
+    <app-window-menu>
+      <app-window-menu-item label="File"> </app-window-menu-item>
+      <app-window-menu-item label="Edit"> </app-window-menu-item>
+      <app-window-menu-item label="Insert"> </app-window-menu-item>
+      <app-window-menu-item label="People"> </app-window-menu-item>
+    </app-window-menu>
 
-    <app-window icon="👥" label="Users">
-      <app-window-menu>
-        <app-window-menu-item label="File">
-        </app-window-menu-item>
-        <app-window-menu-item label="Edit">
-        </app-window-menu-item>
-        <app-window-menu-item label="Insert">
-        </app-window-menu-item>
-        <app-window-menu-item label="People">
-        </app-window-menu-item>
-      </app-window-menu>
-
-      <div class="rigged message-history">
-        <ul>
-          <li *ngFor="let user of users">
-            <span>{{user.username}}</span>
-          </li>
-        </ul>
-      </div>
-      
-    </app-window>
-  </div>
-  
+    <div class="rigged message-history">
+      <ul>
+        <li *ngFor="let user of users">
+          <span>{{ user.username }}</span>
+        </li>
+      </ul>
+    </div>
+  </app-window>
+</div>

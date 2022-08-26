@@ -11,17 +11,16 @@ import { CreateMessage } from 'src/app/messaging/model/create-message';
 @Component({
   selector: 'app-message-window',
   templateUrl: './message-window.component.html',
-  styleUrls: ['./message-window.component.css']
+  styleUrls: ['./message-window.component.css'],
 })
 export class MessageWindowComponent implements OnInit, OnDestroy {
-
-  data?:Message[];
-  conversationID!:number;
-  messageString:string="";
+  data?: Message[];
+  conversationID!: number;
+  messageString: string = '';
 
   loggedInUser = {
-    name: 'jman'
-  }
+    name: 'jman',
+  };
 
   fontSize: number = 14;
   isBold = false;
@@ -29,16 +28,16 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
   loggedIn = false;
   subscription?: Subscription;
   // Let's try and use dependency injection!
-//   constructor() { }
+  //   constructor() { }
 
-  constructor(private messagesService:MessagesService, 
+  constructor(
+    private messagesService: MessagesService,
     private authService: AuthenticateService,
-    private route:ActivatedRoute) { 
-      
-        this.conversationID = Number(this.route.snapshot.paramMap.get("id"))
-
+    private route: ActivatedRoute
+  ) {
+    this.conversationID = Number(this.route.snapshot.paramMap.get('id'));
   }
-  
+
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
@@ -48,23 +47,25 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
 
   // Angular Life Cycle Method: On init:
   ngOnInit(): void {
-    let id:string|null = this.route.snapshot.paramMap.get("id");
+    let id: string | null = this.route.snapshot.paramMap.get('id');
 
     this.getMessages(id);
   }
 
   // Let's create this method to avoid cluttering ng on init
-  getMessages(id:string|null): void {
+  getMessages(id: string | null): void {
     // 2 (should I unsubscribe? Why or why not?)
-      this.subscription = this.messagesService.getMessages(id).subscribe
-          (messages => this.data = messages);
+    this.subscription = this.messagesService
+      .getMessages(id)
+      .subscribe((messages) => (this.data = messages));
   }
 
-  sendMessage(){
-    let newMessage:CreateMessage = {
-    content: this.messageString}
-    this.messagesService.sendMessage(newMessage,this.conversationID)
-    this.messageString=""
+  sendMessage() {
+    let newMessage: CreateMessage = {
+      content: this.messageString,
+    };
+    this.messagesService.sendMessage(newMessage, this.conversationID);
+    this.messageString = '';
   }
 
   identify(index: number, message: Message) {
