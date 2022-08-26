@@ -7,18 +7,24 @@
       </div>
       <form class="form" [formGroup]="signUpForm" (ngSubmit)="signup()">
         <label for="username"> Username🔑 </label>
-        <input required id="username" formControlName="username" />
+        <input
+          required
+          id="username"
+          formControlName="username"
+          maxlength="32"
+          minlength="3"
+        />
         <label for="password"> Password </label>
         <input
           required
           id="password"
           type="password"
           formControlName="password"
+          maxlength="32"
+          minlength="6"
         />
         <div *ngIf="showErrorMessage">
-          <h5 class="login-error">
-            Error occured... Please try again
-          </h5>
+          <h5 class="login-error">Error occured... Please try again</h5>
         </div>
         <button
           class="grooved icon-button"

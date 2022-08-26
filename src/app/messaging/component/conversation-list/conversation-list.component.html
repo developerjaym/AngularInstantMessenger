@@ -1,0 +1,21 @@
+<div class="chat-container">
+  <app-window icon="💬" label="List of Conversations">
+    <ul class="conversations-list">
+      <li *ngFor="let conversation of conversations">
+        <a routerLink="/{{ conversationsURL }}/{{ conversation.id }}/messages">
+          {{ conversation.name }}
+        </a>
+      </li>
+    </ul>
+
+    <div class="newConversation-button-container">
+      <button
+        routerLink="conversations/create"
+        type="button"
+        class="add-button"
+      >
+        New Conversation
+      </button>
+    </div>
+  </app-window>
+</div>

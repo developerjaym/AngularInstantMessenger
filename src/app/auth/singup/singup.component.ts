@@ -8,7 +8,7 @@ import { AuthenticateService } from 'src/app/authenticate.service';
   templateUrl: './singup.component.html',
   styleUrls: ['./singup.component.css'],
 })
-export class SingupComponent implements OnInit {
+export class SingUpComponent implements OnInit {
   signUpForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,

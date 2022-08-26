@@ -1,0 +1,14 @@
+.chat-container {
+  width: 600px;
+}
+
+.add-button {
+  width: 20vh;
+}
+
+.newConversation-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+  margin-right: 10px;
+}
