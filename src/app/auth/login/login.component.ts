@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       if (goodCredentials) {
         this.router.navigate(['conversations']);
         return;
+      } else {
+        alert("Username or password incorrect")
       }
       console.log('did i have good credentials ', goodCredentials);
     });

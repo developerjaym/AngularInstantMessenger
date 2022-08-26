@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MessageWindowComponent } from './message-window.component';
+import { UserListComponent } from './user-list.component';
 
-describe('MessageWindowComponent', () => {
-  let component: MessageWindowComponent;
-  let fixture: ComponentFixture<MessageWindowComponent>;
+describe('UserListComponent', () => {
+  let component: UserListComponent;
+  let fixture: ComponentFixture<UserListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessageWindowComponent],
+      declarations: [UserListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MessageWindowComponent);
+    fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

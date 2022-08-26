@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { JwtAuthenticationResponse } from './auth/model/jwt-authentication-response';
 import { LoginRequest } from './auth/model/login-request';
 import { SignUpRequest } from './auth/model/sign-up-request';
+import { UserDTO } from './messaging/model/user-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -23,15 +24,22 @@ export class AuthenticateService {
   signin(loginRequest: LoginRequest): Observable<boolean> {
     // 1
     return this.httpClient
-      .post<JwtAuthenticationResponse>(environment.usersLink + 'signin', loginRequest)
+      .post<JwtAuthenticationResponse>(
+        environment.usersLink + 'signin',
+        loginRequest
+      )
       .pipe(
         tap(
           (jwtAuthenticationResponse) =>
             (this.jwtAuthenticationResponse = jwtAuthenticationResponse)
         ),
-        map(response => true),
-        catchError(e => of(false))
+        map((response) => true),
+        catchError((e) => of(false))
       );
+  }
+
+  getUsers(): Observable<UserDTO[]> {
+    return this.httpClient.get<UserDTO[]>(environment.usersLink);
   }
 
   getAuthorizationHeaderValue(): string {

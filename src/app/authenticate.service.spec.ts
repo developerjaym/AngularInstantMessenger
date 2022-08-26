@@ -23,8 +23,8 @@ fdescribe('AuthenticateService', () => {
 
     service
       .signup({
-        username: "jay",
-        password: "123"
+        username: 'jay',
+        password: '123',
       })
       .subscribe({
         next: (response) => {
@@ -39,23 +39,25 @@ fdescribe('AuthenticateService', () => {
   it('sign up fails', (done: DoneFn) => {
     const errorResponse = new HttpErrorResponse({
       error: 'test 404 error',
-      status: 404, statusText: 'Not Found'
+      status: 404,
+      statusText: 'Not Found',
     });
 
     httpClientSpy.post.and.returnValue(asyncError(errorResponse));
 
-    service.signup({
-      username: "jay",
-      password: "123"
-    }).subscribe({
-      next: response => done.fail('expected an error, not heroes'),
-      error: error  => {
-        expect(true).toBe(true);
-        done();
-      }
-
+    service
+      .signup({
+        username: 'jay',
+        password: '123',
+      })
+      .subscribe({
+        next: (response) => done.fail('expected an error, not heroes'),
+        error: (error) => {
+          expect(true).toBe(true);
+          done();
+        },
+      });
   });
-});
   // sign up POST succeeds
   // sign up POST fails
 });
