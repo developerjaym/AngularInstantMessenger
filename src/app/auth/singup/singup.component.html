@@ -1,13 +1,13 @@
 <div class="login-container">
-  <app-window icon="🔑" label="Sign On">
+  <app-window icon="🔑" label="Sign Up">
     <div class="login-window-pane">
       <div class="under-ridged logo-container">
         <div class="logo-icon">🏃</div>
         <div class="logo-label">Angular Instant Messenger</div>
       </div>
-      <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
-        <label for="screenName"> ScreenName🔑 </label>
-        <input required id="screenName" formControlName="username" />
+      <form class="form" [formGroup]="signUpForm" (ngSubmit)="signup()">
+        <label for="username"> Username🔑 </label>
+        <input required id="username" formControlName="username" />
         <label for="password"> Password </label>
         <input
           required
@@ -18,15 +18,11 @@
         <button
           class="grooved icon-button"
           type="submit"
-          [disabled]="loginForm.invalid"
+          [disabled]="signUpForm.invalid"
         >
           <div class="icon-button__icon">🏃</div>
-          <div class="icon-button__label">Sign On</div>
+          <div class="icon-button__label">Sign Up</div>
         </button>
-        <p class="text-muted text-center mt-3 mb-0">
-          Don't have an account?
-          <a routerLink="/signup" class="text-primary ml-1">Register</a>
-        </p>
       </form>
     </div>
   </app-window>
