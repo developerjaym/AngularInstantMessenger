@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
         this.showErrorMessage = false;
         this.router.navigate(['chat', '1']);
         return;
+      } else {
+        alert("Username or password incorrect")
       }
       this.showErrorMessage = true;
       console.log('did i have good credentials ', goodCredentials);
