@@ -41,7 +41,7 @@ export class MessagesService {
   sendMessage(newMessage: CreateMessage, conversationID: number) {
     this.httpClient
       .post(
-        `http://localhost:8080/api/conversations/${conversationID}/messages`,
+        environment.conversationLink +`${conversationID}/messages`,
         newMessage
       )
       .subscribe();
