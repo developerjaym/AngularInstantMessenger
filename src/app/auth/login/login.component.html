@@ -16,6 +16,11 @@
           type="password"
           formControlName="password"
         />
+        <div *ngIf="showErrorMessage">
+          <h5 class="login-error">
+            Invalid username or password... Please try again
+          </h5>
+        </div>
         <button
           class="grooved icon-button"
           type="submit"

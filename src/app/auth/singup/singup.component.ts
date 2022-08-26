@@ -21,7 +21,7 @@ export class SingupComponent implements OnInit {
     });
   }
 
-  success?: boolean;
+  showErrorMessage = false;
 
   ngOnInit(): void {}
 
@@ -30,11 +30,11 @@ export class SingupComponent implements OnInit {
     this.signUpForm.reset();
     this.authService.signup(formValue).subscribe({
       next: (data) => {
-        this.success = true;
+        this.showErrorMessage = false;
         this.router.navigate(['/login']);
       },
       error: (err) => {
-        this.success = false;
+        this.showErrorMessage = true;
       },
     });
   }

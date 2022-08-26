@@ -15,8 +15,10 @@
           type="password"
           formControlName="password"
         />
-        <div *ngIf="success">
-          <h3 class="text-danger">Error occured , try again</h3>
+        <div *ngIf="showErrorMessage">
+          <h5 class="login-error">
+            Error occured... Please try again
+          </h5>
         </div>
         <button
           class="grooved icon-button"
