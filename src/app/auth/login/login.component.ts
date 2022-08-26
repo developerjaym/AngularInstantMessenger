@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
         if (goodCredentials) {
           this.router.navigate(["chat", "1"])
         }
-        
+        else{
+          alert("Username or password incorrect")
+        }
       }
     );
   }
