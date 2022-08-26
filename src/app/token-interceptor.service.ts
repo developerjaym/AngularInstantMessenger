@@ -24,7 +24,6 @@ import { AuthenticateService } from './authenticate.service';
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error && (error.status === 401 || error.status === 403)) {
-          console.log("OH NO!");
           // Why not redirect them to the log in page!
           // or refresh / re-log them in some how/
         }
