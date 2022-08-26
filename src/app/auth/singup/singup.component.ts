@@ -16,30 +16,25 @@ export class SingupComponent implements OnInit {
     private router: Router
   ) {
     this.signUpForm = this.formBuilder.group({
-      username: ['', Validators.minLength(3)],
-      password: ['', Validators.minLength(3)],
+      username: ['', [Validators.minLength(3), Validators.maxLength(32)]],
+      password: ['', [Validators.minLength(6), Validators.maxLength(32)]],
     });
   }
 
-  error?: string;
+  success?: boolean;
 
   ngOnInit(): void {}
 
   signup() {
-    if (this.signUpForm.invalid) {
-      return;
-    }
-
     let formValue = this.signUpForm.value;
     this.signUpForm.reset();
     this.authService.signup(formValue).subscribe({
       next: (data) => {
+        this.success = true;
         this.router.navigate(['/login']);
-        alert('Sign Up is successful!');
       },
       error: (err) => {
-        this.error = err;
-        alert(this.error);
+        this.success = false;
       },
     });
   }

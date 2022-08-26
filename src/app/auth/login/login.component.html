@@ -8,6 +8,7 @@
       <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
         <label for="screenName"> ScreenName🔑 </label>
         <input required id="screenName" formControlName="username" />
+        <a routerLink="/signup" class="text-left ml-1">Get a Screen Name</a>
         <label for="password"> Password </label>
         <input
           required
@@ -23,10 +24,6 @@
           <div class="icon-button__icon">🏃</div>
           <div class="icon-button__label">Sign On</div>
         </button>
-        <p class="text-muted text-center mt-3 mb-0">
-          Don't have an account?
-          <a routerLink="/signup" class="text-primary ml-1">Register</a>
-        </p>
       </form>
     </div>
   </app-window>
