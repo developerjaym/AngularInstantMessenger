@@ -34,9 +34,8 @@ export class MessageWindowComponent implements OnInit, OnDestroy {
   constructor(private messagesService:MessagesService, 
     private authService: AuthenticateService,
     private route:ActivatedRoute) { 
-      this.route.paramMap.subscribe((paramMap) => {
-        this.conversationID = Number(paramMap.get('id'));
-      });
+      
+        this.conversationID = Number(this.route.snapshot.paramMap.get("id"))
 
   }
   
