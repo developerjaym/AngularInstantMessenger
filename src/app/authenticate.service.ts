@@ -45,4 +45,18 @@ export class AuthenticateService {
   getAuthorizationHeaderValue(): string {
     return `${this.jwtAuthenticationResponse?.tokenType} ${this.jwtAuthenticationResponse?.accessToken}`;
   }
+
+  getUserId(): number {
+    let jwt = this.jwtAuthenticationResponse?.accessToken;
+
+    const jwtSegments = jwt?.split('.') || [];
+
+    const claims = jwtSegments[1];
+
+    const decodedClaims = atob(claims);
+
+    const decodedClaimsObject = JSON.parse(decodedClaims);
+
+    return parseInt(decodedClaimsObject.sub);
+  }
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'chat/:id', component: MessageWindowComponent },
   { path: 'signup', component: SingUpComponent },
   { path: 'conversations', component: ConversationListComponent },
-  { path: 'conversations/create', component: AddConversationComponent },
+  { path: 'create', component: AddConversationComponent },
 ];
 
 @NgModule({

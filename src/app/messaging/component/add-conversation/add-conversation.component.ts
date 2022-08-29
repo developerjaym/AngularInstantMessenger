@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateService } from 'src/app/authenticate.service';
+import { ConversationsService } from 'src/app/conversations.service';
+import { CreateConversationDTO } from '../../model/create-conversation-dto';
+import { UserDTO } from '../../model/user-dto';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-conversation',
@@ -6,7 +12,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-conversation.component.css'],
 })
 export class AddConversationComponent implements OnInit {
-  constructor() {}
+  conversationName: string = '';
+  friendsList: UserDTO[] = [];
+  checkedFriends: boolean[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private authService: AuthenticateService,
+    private conversationService: ConversationsService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.authService.getUsers().subscribe((users) => {
+      this.friendsList = users;
+      this.friendsList.forEach((friend) => {
+        this.checkedFriends.push(false);
+      });
+    });
+  }
+
+  createConversation() {
+    const addedFriendsList = [];
+
+    for (let i = 0; i < this.checkedFriends.length; i++) {
+      if (this.checkedFriends[i] === true) {
+        addedFriendsList.push(this.friendsList[i].id);
+      }
+    }
+
+    let newConversation: CreateConversationDTO = {
+      userIds: addedFriendsList,
+      name: this.conversationName,
+    };
+
+    this.conversationService.addConversation(newConversation);
+
+    this.router.navigate(['/conversations']);
+  }
 }
