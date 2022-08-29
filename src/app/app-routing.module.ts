@@ -10,7 +10,10 @@ import { MessageWindowComponent } from './messaging/component/message-window/mes
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'chat/:id', component: MessageWindowComponent },
+  {
+    path: 'conversations/:id/messages',
+    component: MessageWindowComponent,
+  },
   { path: 'signup', component: SingUpComponent },
   { path: 'conversations', component: ConversationListComponent },
   { path: 'create', component: AddConversationComponent },

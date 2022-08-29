@@ -14,6 +14,8 @@ export class ConversationListComponent implements OnInit {
   conversationsURL: string = environment.conversationLink;
   conversations?: ConversationDTO[];
 
+  visible = false;
+
   constructor(private conversationService: ConversationsService) {}
 
   ngOnInit(): void {
@@ -25,5 +27,9 @@ export class ConversationListComponent implements OnInit {
       next: (data: ConversationDTO[]) => (this.conversations = data),
       error: (e: HttpErrorResponse) => alert(e.message),
     });
+  }
+
+  toggleCollapse(): void {
+    this.visible = !this.visible;
   }
 }

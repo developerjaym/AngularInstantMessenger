@@ -19,14 +19,9 @@ export class ConversationsService {
 
   addConversation(conversation: CreateConversationDTO) {
     console.log(conversation);
-    return this.httpClient
-      .post<ConversationDTO[]>(environment.conversationLink, conversation)
-      .subscribe({
-        next: (data) => {
-          this.conversations = data;
-        },
-
-        error: (e: HttpErrorResponse) => alert(e.message),
-      });
+    return this.httpClient.post<ConversationDTO[]>(
+      environment.conversationLink,
+      conversation
+    );
   }
 }

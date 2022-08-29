@@ -1,13 +1,17 @@
 <div class="chat-container">
-  <app-window icon="💬" label="List of Conversations">
-    <ul class="conversations-list">
-      <li *ngFor="let conversation of conversations">
-        <a routerLink="/{{ conversationsURL }}/{{ conversation.id }}/messages">
-          {{ conversation.name }}
-        </a>
-      </li>
-    </ul>
-
+  <app-window icon="💬" label="Conversations">
+    <div class="conversations-list">
+      <h5 (click)="toggleCollapse()">
+        {{ visible ? '>' : 'v' }} - List of Conversations
+      </h5>
+      <div [hidden]="visible" *ngFor="let conversation of conversations">
+        <div>
+          <a routerLink="{{ conversation.id }}/messages">
+            {{ conversation.name }}
+          </a>
+        </div>
+      </div>
+    </div>
     <div class="newConversation-button-container">
       <button routerLink="/create" type="button" class="add-button">
         New Conversation
@@ -15,3 +19,16 @@
     </div>
   </app-window>
 </div>
+
+<!-- <div class="container">
+  <h2>Simple Collapsible</h2>
+  <a href="#demo" class="btn btn-info" data-toggle="collapse"
+    >Simple collapsible</a
+  >
+  <div id="demo" class="collapse">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div> -->

@@ -5,6 +5,7 @@ import { CreateConversationDTO } from '../../model/create-conversation-dto';
 import { UserDTO } from '../../model/user-dto';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-conversation',
@@ -45,8 +46,12 @@ export class AddConversationComponent implements OnInit {
       name: this.conversationName,
     };
 
-    this.conversationService.addConversation(newConversation);
+    this.conversationService.addConversation(newConversation).subscribe({
+      next: (data) => {
+        this.router.navigate(['/conversations']);
+      },
 
-    this.router.navigate(['/conversations']);
+      error: (e: HttpErrorResponse) => alert(e.message),
+    });
   }
 }
