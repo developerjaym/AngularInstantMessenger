@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
-import { SingUpComponent } from './auth/singup/singup.component';
+import { SignUpComponent } from './auth/signup/signup.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AddConversationComponent } from './messaging/component/add-conversation/add-conversation.component';
 import { ConversationListComponent } from './messaging/component/conversation-list/conversation-list.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'conversations/:id/messages',
     component: MessageWindowComponent,
   },
-  { path: 'signup', component: SingUpComponent },
+  { path: 'signup', component: SignUpComponent },
   { path: 'conversations', component: ConversationListComponent },
   { path: 'create', component: AddConversationComponent },
 ];

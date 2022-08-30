@@ -18,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // To add routing to our application we need this module
 import { RouterModule, Routes } from '@angular/router';
-import { SingUpComponent } from './auth/singup/singup.component';
+import { SignUpComponent } from './auth/signup/signup.component';
 import { ConversationListComponent } from './messaging/component/conversation-list/conversation-list.component';
 import { AddConversationComponent } from './messaging/component/add-conversation/add-conversation.component';
 import { UserListComponent } from './messaging/component/user-list/user-list.component';
@@ -33,17 +33,17 @@ import { UserListComponent } from './messaging/component/user-list/user-list.com
     WindowComponent,
     WindowMenuComponent,
     WindowMenuItemComponent,
-    SingUpComponent,
+    SignUpComponent,
     ConversationListComponent,
     AddConversationComponent,
-    UserListComponent
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   // I want Angular to know that I am using a TokenInterceptorService!!!
   providers: [

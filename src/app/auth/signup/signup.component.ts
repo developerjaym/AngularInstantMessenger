@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { AuthenticateService } from 'src/app/authenticate.service';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.css'],
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css'],
 })
-export class SingUpComponent implements OnInit {
+export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
