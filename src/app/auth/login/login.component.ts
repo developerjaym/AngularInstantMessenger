@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  showErrorMessage = false;
-
   ngOnInit(): void {}
 
   login() {
@@ -31,13 +29,11 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
     this.authService.signin(formValue).subscribe((goodCredentials) => {
       if (goodCredentials) {
-        this.showErrorMessage = false;
-        this.router.navigate(['chat', '1']);
+        this.router.navigate(['conversations']);
         return;
       } else {
         alert("Username or password incorrect")
       }
-      this.showErrorMessage = true;
       console.log('did i have good credentials ', goodCredentials);
     });
   }

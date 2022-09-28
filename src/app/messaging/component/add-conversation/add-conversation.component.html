@@ -1,0 +1,36 @@
+<div class="chat-container">
+  <app-window icon="💬" label="New Conversation">
+    <div class="login-window-pane">
+      <form class="form" (ngSubmit)="createConversation()">
+        <div class="new-conversation">
+          <h5 for="conversationName">Conversation Name</h5>
+          <input
+            required
+            id="conversationName"
+            name="conversationName"
+            [(ngModel)]="conversationName"
+          />
+          <div>
+            <h5 for="conversationName">Add your friends</h5>
+
+            <ul class="users-list">
+              <li *ngFor="let friend of friendsList; let i = index">
+                <span>{{ friend.username }} </span>
+                <input
+                  type="checkbox"
+                  name="username"
+                  class="checkbox"
+                  [(ngModel)]="checkedFriends[i]"
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button class="add-button" type="submit">
+          <div class="icon-button__label">Create</div>
+        </button>
+      </form>
+    </div>
+  </app-window>
+</div>

@@ -7,7 +7,7 @@ import { MessageWindowComponent } from './messaging/component/message-window/mes
 import { ToolbarItemComponent } from './component/toolbar-item/toolbar-item.component';
 
 // To make http requests we need to import the module:
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -17,8 +17,10 @@ import { WindowMenuItemComponent } from './component/window-menu-item/window-men
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // To add routing to our application we need this module
-import { RouterModule, Routes } from "@angular/router";
-import { SingupComponent } from './auth/singup/singup.component';
+import { RouterModule, Routes } from '@angular/router';
+import { SignUpComponent } from './auth/signup/signup.component';
+import { ConversationListComponent } from './messaging/component/conversation-list/conversation-list.component';
+import { AddConversationComponent } from './messaging/component/add-conversation/add-conversation.component';
 import { UserListComponent } from './messaging/component/user-list/user-list.component';
 
 @NgModule({
@@ -31,22 +33,26 @@ import { UserListComponent } from './messaging/component/user-list/user-list.com
     WindowComponent,
     WindowMenuComponent,
     WindowMenuItemComponent,
-    SingupComponent
-    UserListComponent
+    SignUpComponent,
+    ConversationListComponent,
+    AddConversationComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   // I want Angular to know that I am using a TokenInterceptorService!!!
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
